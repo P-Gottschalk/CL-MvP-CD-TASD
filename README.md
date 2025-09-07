@@ -44,11 +44,11 @@ For each of theses languages and datasets, please run the section called "Model 
 Once this has been completed, please run the section called "Model Evaluation: Language". This again uses the `model/main_train.py` function, but for model evaluation. This is achieved by not including parameter `--do_train`, but instead `--do_inference`, `--do_inference_best_5` or `--do_inference_best_ckpt`.
 
 Note that the files for the Multilingual(_Small) and English languages are slightly different. They both have a section called "Model Training", but a "Model Evaluatiom: Language" section for each language from the following list:
-    - English
-    - Dutch
-    - French
-    - Spanish
-    - Turkish
+- English
+- Dutch
+- French
+- Spanish
+- Turkish
 
 Lastly, the file `Multilingual_Small_MABSA_CL_MvP_TASD.ipynb` has an entire new section called "Model - Limited Size", which contains an entire section to train and evaluate models on a multilingual dataset that is limited to the same size with respect to sentences as the individual language datasets.
 
@@ -74,6 +74,7 @@ Our model is inspired by from code by:
 
 The `compute_f1_scores` function in `eval_utils.py` was inspired by:
 - Hensen, C. (2025). A weakly supervised generative aspect sentiment quad prediction method. GitHub: https://github.com/CasHensen/WSG-ASQP.git
+
 
 
 
