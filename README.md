@@ -41,7 +41,7 @@ For each these models, we have seperated shells which are split by two categorie
 
 For each of theses languages and datasets, please run the section called "Model Training", which utilises the `model/main_train.py` function to train the various models. This allows for a replication of our results.
 
-Once this has been completed, please run the section called "Model Evaluation: Language". This again uses the `model/main_train.py` function, but for model evaluation. This is achieved by not including parameter `--do_train`, but instead `do_inference`, `do_inference_best_5` or `do_inference_best_ckpt`.
+Once this has been completed, please run the section called "Model Evaluation: Language". This again uses the `model/main_train.py` function, but for model evaluation. This is achieved by not including parameter `--do_train`, but instead `--do_inference`, `--do_inference_best_5` or `--do_inference_best_ckpt`.
 
 Note that the files for the Multilingual(_Small) and English languages are slightly different. They both have a section called "Model Training", but a "Model Evaluatiom: Language" section for each language from the following list:
     - English
@@ -74,6 +74,7 @@ Our model is inspired by from code by:
 
 The `compute_f1_scores` function in `eval_utils.py` was inspired by:
 - Hensen, C. (2025). A weakly supervised generative aspect sentiment quad prediction method. GitHub: https://github.com/CasHensen/WSG-ASQP.git
+
 
 
 
