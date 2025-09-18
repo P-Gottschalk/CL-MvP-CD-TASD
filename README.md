@@ -17,11 +17,11 @@ Also create a `data/txt_raw`. Download the restaurant data from the M-ABSA datas
     - `MABSA_Restaurants_Test_Language.txt`
     - `MABSA_Restaurants_Train_Language.txt`
 
-Note that these directory addresses may have to be adapted in the code itself, as the directories are currently set for a combined usage of Google Colab and Google Drive. The current form in the Colab optimised code is as follows: `/content/drive/MyDrive/data/sem_eval_raw`
+Note that these directory addresses may have to be adapted in the code itself, as the directories are currently set for a combined usage of Google Colab and Google Drive. The current form in the Colab optimised code is as follows: `/content/drive/MyDrive/data/sem_eval_raw`.
 
 ## Running the GitHub
 
-This entire GitHub can be run with [Google Colab](https://colab.research.google.com/). Note that if you choose to not run these models with Colab, you will have to modify various addresses, of functions, such as the input and output paths of various directories. Also note that the CL-MvP-CD-TASD model in its current form requires an A100 GPU with 40GB of RAM to run. We cannot guarantee that GPUs with less RAM have the capacity to train the models.
+This entire GitHub can be run with [Google Colab](https://colab.research.google.com/). Note that if you choose not to run these models with Colab, you will have to modify various addresses of functions, such as the input and output paths of various directories. Also note that the CL-MvP-CD-TASD model in its current form requires an A100 GPU with 40GB of RAM to run. We cannot guarantee that GPUs with less RAM have the capacity to train the models.
 
 Run our code in the following order, using the `.ipynb` files that are found in `all_shells`.
 
@@ -29,40 +29,40 @@ Run our code in the following order, using the `.ipynb` files that are found in 
 
 For all our data to be formatted correctly, please use the `0_Data_CL_MvP_TASD.ipynb` file. Please run "Notebook Setup first. 
 
-Run the section called "SemEval-2016 Conversion", which converts all the `xml` files into standard `txt` files. Then run the section called "Extract Information from .txt Files, which, for both the SemEval-2016 and M-ABSA dataset, converts the `.txt` files into `.json` files. If you would prefer to do this manually, please use the `data/xml_to_txt.py` and the `data/basic_data_read.py` files.
+Run the section called "SemEval-2016 Conversion", which converts all the `xml` files into standard `txt` files. Then run the section called "Extract Information from .txt Files, which, for both the SemEval-2016 and M-ABSA datasets, converts the `.txt` files into `.json` files. If you would prefer to do this manually, please use the `data/xml_to_txt.py` and the `data/basic_data_read.py` files.
 
 If you wish to also run the models on multilingual datasets, please also run the section called "Create Multilingual Datasets", which uses the `data/create_multilingual.py` function. 
 
 If you wish to run fine-tuned LLMs, please create the datasets needed for fine-tuning by also running the section called "Create LLM Finetuning Datasets", which utilises the `data/create_llm_data.py` function.
 
-### mT5-based models
+### mT5-based Models
 
-For each these models, we have seperated shells which are split by two categories: "Language" and "Dataset". In `all_shells`, you can hence find the respective file `Language_Dataset_CL_MvP_TASD.py`. Please run "Notebook Setup" girst.
+For each of these models, we have separated shells which are split by two categories: "Language" and "Dataset". In `all_shells`, you can find the respective file `Language_Dataset_CL_MvP_TASD.py`. Please run "Notebook Setup" first.
 
-For each of theses languages and datasets, please run the section called "Model Training", which utilises the `model/main_train.py` function to train the various models. This allows for a replication of our results.
+For each of these languages and datasets, please run the section called "Model Training", which utilises the `model/main_train.py` function to train the various models. This allows for a replication of our results.
 
 Once this has been completed, please run the section called "Model Evaluation: Language". This again uses the `model/main_train.py` function, but for model evaluation. This is achieved by not including parameter `--do_train`, but instead `--do_inference`, `--do_inference_best_5` or `--do_inference_best_ckpt`.
 
-Note that the files for the Multilingual(_Small) and English languages are slightly different. They both have a section called "Model Training", but a "Model Evaluatiom: Language" section for each language from the following list:
+Note that the files for the Multilingual(_Small) and English languages are slightly different. They both have a section called "Model Training", but a "Model Evaluation: Language" section for each language from the following list:
 - English
 - Dutch
 - French
 - Spanish
 - Turkish
 
-Lastly, the file `Multilingual_Small_MABSA_CL_MvP_TASD.ipynb` has an entire new section called "Model - Limited Size", which contains an entire section to train and evaluate models on a multilingual dataset that is limited to the same size with respect to sentences as the individual language datasets.
+Lastly, the file `Multilingual_Small_MABSA_CL_MvP_TASD.ipynb` has an entirely new section called "Model - Limited Size", which contains a section to train and evaluate models on a multilingual dataset that is limited to the same size with respect to sentences as the individual language datasets.
 
 ### LLM Models
 
 For all LLM models across datasets, you can use the file `0_LLM_Comparison_ML_CL_MvP_TASD.ipynb`. Again, run the "Notebook Setup". You have to insert your own "OPENAI_API_KEY".
 
-For each "Dataset" from the list \[SemEval-2016, M-ABBSA\], run the section called "Dataset: Text Generation". First, in the subsection "Fine-Tuning", the respective GPT-4.1-mini model is finetuned, using the function `llm/generation/fine_tune.py`. Then, text generation is carried out for all different prompt combinations, for each language, as well as for the fine-tuned models. This uses the function `llm/generation/inf.py`. 
+For each "Dataset" from the list \[SemEval-2016, M-ABBSA\], run the section called "Dataset: Text Generation". First, in the subsection "Fine-Tuning", the respective GPT-4.1-mini model is fine-tuned, using the function `llm/generation/fine_tune.py`. Then, text generation is carried out for all different prompt combinations, for each language, as well as for the fine-tuned models. This uses the function `llm/generation/inf.py`. 
 
 Once the "Dataset: Text Generation" section has run, please run the corresponding "Dataset: Eval" section. Here, the function `llm/generation/eval.py` is used to evaluate the accuracy of the text generation.
 
 ### Results - Combine
 
-Once the previous steps have been run, you have results, albeit scattered across files. Lastly, you again used the `0_Data_CL_MvP_TASD.ipynb` file. Once you have run the "Notebook Setup", please run the section "Combine Results". You can also run individual functions here if you have not trained all models. Here `data/results_collation.py` is used to create results files that are easier to read, both with and without the precision and recall included. Lastly, `data/further_eval.py` is used to evaluate the F1 scores of the individual sentiment elements in each triplet.
+Once the previous steps have been run, you have results, albeit scattered across files. Lastly, you again used the `0_Data_CL_MvP_TASD.ipynb` file. Once you have run the "Notebook Setup", please run the section "Combine Results". You can also run individual functions here if you have not trained all models. Here, `data/results_collation.py` is used to create results files that are easier to read, both with and without the precision and recall included. Lastly, `data/further_eval.py` is used to evaluate the F1 scores of the individual sentiment elements in each triplet.
 
 ## Acknowledgements
 
@@ -74,6 +74,7 @@ Our model is inspired by from code by:
 
 The `compute_f1_scores` function in `eval_utils.py` was inspired by:
 - Hensen, C. (2025). A weakly supervised generative aspect sentiment quad prediction method. GitHub: https://github.com/CasHensen/WSG-ASQP.git
+
 
 
 
