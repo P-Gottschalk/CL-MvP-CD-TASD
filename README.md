@@ -13,9 +13,9 @@ First, create a `data/sem_eval_raw` directory and download the [SemEval-2016](ht
 Also create a `data/txt_raw`. Download the restaurant data from the M-ABSA dataset, found in the [M-ABSA GitHub](https://github.com/swaggy66/eval-llm-mabsa.git). Please rename these as follows:
 
 - `data/txt_raw`
-    - `SemEval16_Restaurants_Dev_Language.txt`
-    - `SemEval16_Restaurants_Test_Language.txt`
-    - `SemEval16_Restaurants_Train_Language.txt`
+    - `MABSA_Restaurants_Dev_Language.txt`
+    - `MABSA_Restaurants_Test_Language.txt`
+    - `MABSA_Restaurants_Train_Language.txt`
 
 Note that these directory addresses may have to be adapted in the code itself, as the directories are currently set for a combined usage of Google Colab and Google Drive. The current form in the Colab optimised code is as follows: `/content/drive/MyDrive/data/sem_eval_raw`
 
@@ -74,6 +74,7 @@ Our model is inspired by from code by:
 
 The `compute_f1_scores` function in `eval_utils.py` was inspired by:
 - Hensen, C. (2025). A weakly supervised generative aspect sentiment quad prediction method. GitHub: https://github.com/CasHensen/WSG-ASQP.git
+
 
 
 
