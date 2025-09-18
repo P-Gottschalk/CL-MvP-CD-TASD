@@ -56,7 +56,7 @@ Lastly, the file `Multilingual_Small_MABSA_CL_MvP_TASD.ipynb` has an entirely ne
 
 For all LLM models across datasets, you can use the file `0_LLM_Comparison_ML_CL_MvP_TASD.ipynb`. Again, run the "Notebook Setup". You have to insert your own "OPENAI_API_KEY".
 
-For each "Dataset" from the list \[SemEval-2016, M-ABBSA\], run the section called "Dataset: Text Generation". First, in the subsection "Fine-Tuning", the respective GPT-4.1-mini model is fine-tuned, using the function `llm/generation/fine_tune.py`. Then, text generation is carried out for all different prompt combinations, for each language, as well as for the fine-tuned models. This uses the function `llm/generation/inf.py`. 
+For each "Dataset" from the list \[SemEval-2016, M-ABSA\], run the section called "Dataset: Text Generation". First, in the subsection "Fine-Tuning", the respective GPT-4.1-mini model is fine-tuned, using the function `llm/generation/fine_tune.py`. Then, text generation is carried out for all different prompt combinations, for each language, as well as for the fine-tuned models. This uses the function `llm/generation/inf.py`. 
 
 Once the "Dataset: Text Generation" section has run, please run the corresponding "Dataset: Eval" section. Here, the function `llm/generation/eval.py` is used to evaluate the accuracy of the text generation.
 
@@ -74,6 +74,7 @@ Our model is inspired by from code by:
 
 The `compute_f1_scores` function in `eval_utils.py` was inspired by:
 - Hensen, C. (2025). A weakly supervised generative aspect sentiment quad prediction method. GitHub: https://github.com/CasHensen/WSG-ASQP.git
+
 
 
 
